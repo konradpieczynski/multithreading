@@ -3,8 +3,6 @@ package com.kodilla.lock;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static com.kodilla.util.SleepUtil.sleep;
-
 public class LockTest {
    public static void main(String[] args) {
       final LockedWarehouse lockedWarehouse = new LockedWarehouse();

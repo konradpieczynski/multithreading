@@ -1,10 +1,10 @@
 package com.kodilla.lock;
 
+import com.kodilla.util.SleepUtil;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.locks.*;
-
-import static com.kodilla.util.SleepUtil.sleep;
 
 public class LockedWarehouse {
 
@@ -15,7 +15,7 @@ public class LockedWarehouse {
       System.out.println("I'm " + by + " and want to add " + product);
       final long stamp = lock.writeLock();
       try {
-         sleep(2);
+         SleepUtil.sleep(2);
          products.merge(product, 1, Integer::sum);
          System.out.println("Product " + product + " added by " + by + ". Now is  " + countProducts());
       } finally {
@@ -27,7 +27,7 @@ public class LockedWarehouse {
       System.out.println("I'm " + by + " and want to remove " + product);
       final long stamp = lock.writeLock();
       try {
-         sleep(2);
+         SleepUtil.sleep(2);
          if (products.get(product) != null) {
             if (products.get(product) > 0) {
             products.merge(product, -1, Integer::sum);
